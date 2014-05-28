@@ -1,0 +1,1 @@
+document.write("<iframe frameborder='0' width='720' height='500' src='<sugar_site_url_here>/iportal.php'></iframe>");

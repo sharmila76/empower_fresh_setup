@@ -1,0 +1,37 @@
+<?php
+// created: 2014-05-19 06:52:32
+$layout_defs = array (
+  'name' => 
+  array (
+    'vname' => 'LBL_LIST_NAME',
+    'widget_class' => 'SubPanelDetailViewLink',
+    'width' => '40%',
+    'default' => true,
+  ),
+  'actual_c' => 
+  array (
+    'type' => 'float',
+    'default' => true,
+    'vname' => 'LBL_ACTUAL',
+    'width' => '20%',
+  ),
+  'billable_c' => 
+  array (
+    'type' => 'float',
+    'default' => true,
+    'vname' => 'LBL_BILLABLE',
+    'width' => '20%',
+  ),
+  'date_start' => 
+  array (
+    'vname' => 'LBL_DATE_START',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'date_finish' => 
+  array (
+    'vname' => 'LBL_DATE_FINISH',
+    'width' => '10%',
+    'default' => true,
+  ),
+);

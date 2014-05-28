@@ -1,0 +1,499 @@
+<!-- BEGIN: main -->
+<script type="text/javascript" src="include/javascript/popup_parent_helper.js?s={SUGAR_VERSION}&c={JS_CUSTOM_VERSION}"></script>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+		<form name="EditView" method="POST" action="index.php" enctype="multipart/form-data">
+		<input type="hidden" name="module" value="Inventory_items">
+		<input type="hidden" name="record" value="{ID}">
+		<input type="hidden" name="action">
+		<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+		<input type="hidden" name="return_id" value="{RETURN_ID}">
+		<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+
+<td style="padding-bottom: 2px;">
+<input type="hidden" name="isDuplicate" value=false>
+<input type="hidden" name="isSaveAndNew" value=false>			
+<input type="hidden" name="start" value="{START}"/>
+<input type="hidden" name="return_module" value="{RETURN_MODULE}" />
+<input type="hidden" name="return_id" value="{RETURN_ID}" />
+<input type="hidden" name="return_action" value="{RETURN_ACTION}" />
+
+<input type="submit" name="button" class="button"
+	title="{APP.LBL_SAVE_BUTTON_TITLE}"
+	accessKey="{APP.LBL_SAVE_BUTTON_KEY}"
+	value="  {APP.LBL_SAVE_BUTTON_LABEL}  "
+	onclick="this.form.action.value='Save';return check_form('EditView'); " />
+<input type="submit" name="button" class="button"
+	title="{APP.LBL_CANCEL_BUTTON_TITLE}"
+	accessKey="{APP.LBL_CANCEL_BUTTON_KEY}"
+	onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'"
+	value="  {APP.LBL_CANCEL_BUTTON_LABEL}  " />
+	
+</td>
+<td align="right" nowrap="nowrap"><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabForm">
+<tr>
+<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot4b">
+				{MOD.LBL_ACCOUNT_NAME}
+			</span sugar="slot">
+			<span class="required">
+				{APP.LBL_REQUIRED_SYMBOL}
+			</span>
+		</td>
+		<td class="dataField">
+			<span sugar="slot3b">
+				<input title="{APP.LBL_SELECT_BUTTON_TITLE}" 
+						accessKey="{APP.LBL_SELECT_BUTTON_KEY}" 
+						type="button" 
+						class="button" 
+						value="{APP.LBL_SELECT_BUTTON_LABEL}" 
+						name="btn1"
+						onclick='open_popup("Accounts", 600, 400, "", true, false, {encoded_popup_request_data}, "single", true);'/>
+				<input class="sqsEnabled" 
+						autocomplete="off" 
+						id="account_name" 
+						name="account_name" 
+						size="25" 
+						type="text" 
+						readonly = "true"
+						value="{ACCOUNT_NAME}" />
+				<input id="account_id" 
+						name="account_id" 
+						type="hidden" 
+						value="{ACCOUNT_ID}" />
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot8b">
+				{MOD.LBL_TITLE}
+			</span sugar="slot">
+			<span class="required">
+				{APP.LBL_REQUIRED_SYMBOL}
+			</span>
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot8">
+				<input name="title" 
+					size="25" 
+					maxlength="255" 
+					type="text" 
+					value="{TITLE}" />
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot19b">
+				{MOD.LBL_IN_STORAGE}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot20">
+				<select name="in_storage">
+					{IN_STORAGE_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot6b">
+				{MOD.LBL_STORAGE_TYPE}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot7">
+				<select name="storage_type">
+					{STORAGE_TYPE_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot22b">
+				{MOD.LBL_CONDITION}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot23">
+				<select name="condition">
+					{CONDITION_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot21b">
+				{MOD.LBL_INSURED}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot22">
+				<select name="insured">
+					{INSURED_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot24b">
+				{MOD.LBL_FACILITY}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot25">
+				<select name="facility">
+					{FACILITY_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot13b">
+				{MOD.LBL_PACKING}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot14">
+				<select name="packing">
+					{PACKING_OPTIONS}	
+				</select>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot5b">
+				{MOD.LBL_COMPANY_NAME}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot6">
+				<select name="company_name"> 
+					{COMPANY_NAME_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot10b">
+				{MOD.LBL_MEDIUM}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot11">
+				<select name="medium">
+					{MEDIUM_OPTIONS}
+				</select>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot7b">
+				{MOD.LBL_ARTIST}
+			</span sugar="slot">
+			<span class="required">
+				{APP.LBL_REQUIRED_SYMBOL}
+			</span>
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot8">
+				<input name="artist" 
+					size="25" 
+					maxlength="255" 
+					type="text" 
+					value="{ARTIST}" />
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot9b">
+				{MOD.LBL_CIRCA}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot10">
+				<input name="circa" 
+					size="5" 
+					maxlength="4" 
+					type="text" 
+					value="{CIRCA}" />
+			</span sugar="slot">
+		</td>
+	</tr>
+
+
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot16b">
+				{MOD.LBL_DIMENSIONS}(in)
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot17">
+				<table>
+					<tr>
+						<td>
+							<input name="height" 
+								type="text"
+								size="5" 
+								maxlength="7" 
+								type="text" 
+								value="{HEIGHT}" />
+						</td>
+						<td>
+							<input name="width" 
+								type="text" 
+								size="5" 
+								maxlength="7" 
+								value="{WIDTH}" />
+						</td>
+						<td>
+							<input name="depth" 
+								type="text" 
+								size="5" 
+								maxlength="7" value="{DEPTH}" />
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<i>Height</i>
+						</td>
+						<td align="center">
+							<i>Width</i>
+						</td>
+						<td align="center">
+							<i>Depth</i>
+						</td>
+					</tr>
+				</table>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot18b">
+				{MOD.LBL_SQUARE_FOOTAGE}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot19">
+				<input name="square_footage" 
+					size="5" 
+					maxlength="10" 
+					type="text" 
+					value="{SQUARE_FOOTAGE}" />
+				ft<sup>2</sup>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot20b">
+				{MOD.LBL_VALUE}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot21">
+				$<input name="value" 
+					size="15" 
+					maxlength="15" 
+					type="text" 
+					value="{VALUE}" />
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot23b">
+				{MOD.LBL_CONDITION_DESCRIPTION}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot24">
+				<textarea name="condition_description">{CONDITION_DESCRIPTION}</textarea>
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot14b">
+				{MOD.LBL_DESCRIPTION}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot15">
+				<textarea name="description">{DESCRIPTION}</textarea>
+			</span sugar="slot">
+		</td>
+		<td width="10%" class="dataLabel">
+			<span sugar="slot24b">
+				{MOD.LBL_LOCATION}
+			</span sugar="slot">
+		</td>
+		<td width="15%" class="dataField">
+			<span sugar="slot25">
+				<input name="location" 
+					size="25" 
+					maxlength="35" 
+					type="text" 
+					value="{LOCATION}" />
+			</span sugar="slot">
+		</td>
+	</tr>
+	<tr>
+
+		<td class="dataLabel">
+			<span sugar='slot3'>{MOD.LBL_DATE_RECEIVED}</span sugar='slot'>
+		</td>
+		<td class="dataField" nowrap="nowrap">
+			<span sugar='slot3b'>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			<td nowrap="nowrap">
+			<input name='date_received' 
+				id='jscal_field' 
+				onblur="parseDate(this, '{CALENDAR_DATEFORMAT}');" 
+				maxlength='10' 
+				size='11' 
+				{READONLY}
+				type="text" 
+				value="{DATE_RECEIVED}">
+			<img src="themes/{THEME}/images/jscalendar.gif" 
+				alt="no images == no worky" 
+				id="jscal_trigger" 
+				align="absmiddle" />
+			</td>
+			</tr>
+			<tr>
+			<td nowrap="nowrap"><span class="dateFormat">{USER_DATEFORMAT}</span></td>
+			</tr>
+		</table>
+			</span sugar='slot'>
+		</td>
+		<td class="dataLabel">
+			<span sugar='slot3'>{MOD.LBL_DATE_LEFT}</span sugar='slot'>
+		</td>
+		<td class="dataField" nowrap="nowrap"><span sugar='slot5b'>
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			<td nowrap="nowrap">
+
+			<input name='date_left' 
+				id='date_start' 
+				onblur="parseDate(this, '{CALENDAR_DATEFORMAT}');" 
+				maxlength='10' 
+				size='11' 
+				{READONLY}
+				type="text" 
+				value="{DATE_LEFT}"> 
+	
+			<img src="themes/{THEME}/images/jscalendar.gif" 
+				alt="no images == no worky"  
+				id="date_start_trigger" 
+				align="absmiddle">&nbsp;</td>
+		
+			</tr>
+			<tr>
+			<td nowrap="nowrap"><span class="dateFormat">{USER_DATEFORMAT}</span></td>
+			</tr>
+			</table>
+			</span sugar='slot'>
+		</td>
+	</tr>
+	<tr>
+		<td width="10%" class="dataField">
+			Picture
+		</td>
+		<td width="15%" class="dataField">
+			<input type="file" name="photo"/>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+</table>
+</td></tr></table>
+
+
+
+<div style="padding-top: 2px;">
+<input type="submit" name="button" class="button"
+	title="{APP.LBL_SAVE_BUTTON_TITLE}"
+	value="  {APP.LBL_SAVE_BUTTON_LABEL}  "
+	onclick="this.form.action.value='Save';return check_form('EditView'); " />
+<input type="submit" name="button" class="button"
+	title="{APP.LBL_CANCEL_BUTTON_TITLE}"
+	onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'"
+	value="  {APP.LBL_CANCEL_BUTTON_LABEL}  " />
+<input title="{APP.LBL_CLOSE_AND_CREATE_BUTTON_TITLE}" accessKey="{APP.LBL_CLOSE_AND_CREATE_BUTTON_KEY}" class="button" 
+	onclick="this.form.status.value='Completed';this.form.action.value='Save';
+	this.form.return_module.value='Tasks';this.form.isDuplicate.value=true;
+	this.form.isSaveAndNew.value=true;this.form.return_action.value='EditView'; 
+	this.form.return_id.value='{ID}';return check_form('EditView');" type="submit" name="button" value="  {APP.LBL_CLOSE_AND_CREATE_BUTTON_LABEL}  " >
+	
+</div>
+</form>
+<script type="text/javascript">
+Calendar.setup ({
+	inputField : "jscal_field", ifFormat : "{CALENDAR_DATEFORMAT}", showsTime : false, button : "jscal_trigger", singleClick : true, step : 1
+});
+Calendar.setup ({
+	inputField : "date_start", ifFormat : "{CALENDAR_DATEFORMAT}", showsTime : false, button : "date_start_trigger", singleClick : true, step : 1
+});
+</script>
+<script type="text/javascript">
+
+function set_date_due_values(form) {
+	if (form.date_due_flag.checked) {
+		form.date_due_flag.value='on';
+		form.date_due.value="";
+		form.time_due.value="";
+		form.date_due.readOnly=true;
+		form.time_due.readOnly=true;
+		if(typeof(form.due_meridiem) != 'undefined') form.due_meridiem.disabled=true;
+		document.images.jscal_trigger.width = 18;
+		document.images.jscal_trigger.height = 18;
+
+	}
+	else {
+		form.date_due_flag.value='off';
+		form.date_due.readOnly=false;
+		form.time_due.readOnly=false;
+		
+		if(typeof(form.due_meridiem) != 'undefined') form.due_meridiem.disabled=false;
+		document.images.jscal_trigger.width = 18;
+		document.images.jscal_trigger.height = 18;
+	}
+}
+	
+function set_date_start_values(form) {
+	if (form.date_start_flag.checked) {
+		form.date_start_flag.value='on';
+		form.date_start.value="";
+		form.time_start.value="";
+		form.date_start.readOnly=true;
+		form.time_start.readOnly=true;
+		if(typeof(form.start_meridiem) != 'undefined') form.start_meridiem.disabled=true;
+		document.images.date_start_trigger.width = 18;
+		document.images.date_start_trigger.height = 18;
+	}
+	else {
+		form.date_start_flag.value='off';
+		form.date_start.readOnly=false;
+		form.time_start.readOnly=false;
+		if(typeof(form.start_meridiem) != 'undefined') form.start_meridiem.disabled=false;
+		document.images.date_start_trigger.width = 18;
+		document.images.date_start_trigger.height = 18;
+	}
+}
+
+set_date_due_values(document.EditView);
+set_date_start_values(document.EditView);
+</script>
+{JAVASCRIPT}
+<!-- END: main -->

@@ -1,0 +1,72 @@
+<form method="POST" action="index.php">
+    <input type="hidden" name="module" value="AddPackage">
+    <input type="hidden" name="action" value="Pricing">
+    <h3>PriceList For Package</h3>
+    <table style="border:1px solid silver; width:100%" id="tblFeatures" style="height:auto">
+        <tr style="text-align:center; color:#FFFFFF; background-color:#236fbd">
+            <td>Packages</td>
+            <td>Users</td>
+            <td>Subscription</td>
+            <td>Price</td>
+            <td>Discount (%)</td>
+            <td>Max Disc (%)</td>
+        </tr>
+        <tr>
+            {if $PACKAGE_LIST}
+            <td><select title="Package" name='package'>
+                    {foreach from=$PACKAGE_LIST item=value}
+                    <option>{$value.PackageName}</option>
+                    {/foreach}
+                </select>
+            </td>
+            {/if}
+            <td><select title='Package' name='users'>
+                    <option>10 Users</option>
+                    <option>25 Users</option>
+                    <option>50 Users</option>
+                    <option>Unlimited</option>
+                </select></td>
+            <td><select title='Package' name='period'>
+                    <option>1 Month</option>
+                    <option>3 Months</option>
+                    <option>6 Months</option>
+                    <option>1 Year</option>
+                </select></td>
+            <td style='text-align:center'>
+                <input type='text' id='price' maxlength='8' name='price'>
+            </td>
+            <td style='text-align:center'>
+                <input type='text' id='Discount' maxlength='5'  name='discount'>
+            </td>
+            <td style='text-align:center'>
+                <input type='text' id='maxdiscount' maxlength='5' name='maxdiscount' >
+            </td>
+
+            <td colspan="6" style="text-align:right">
+                <input type="submit" class="button" name="add_pricing" value="Save">
+            </td>
+        </tr>
+    </table>
+</form>
+
+<h3>Saved Packages</h3>
+<table style="border:1px solid silver; margin-top:15px; width:100%" id="tblFeatures" style="height:auto">
+    <tr style="text-align:center; color:#FFFFFF; background-color:#236fbd">
+        <td>Packages</td>
+        <td>Users</td>
+        <td>Subscription</td>
+        <td>Price</td>
+        <td>Discount (%)</td>
+        <td>Max Disc (%)</td>
+    </tr>
+    {foreach from=$PRICE_MASTER_LIST item=value}
+    <tr>
+        <td>{$value.PackageName}</td>
+        <td>{$value.TotUsers}</td>
+        <td>{$value.Subscription}</td>
+        <td>{$value.Price}</td>
+        <td>{$value.Discount}</td>
+        <td>{$value.MaxDiscount}</td>
+    </tr>
+    {/foreach}
+</table>

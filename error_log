@@ -1,0 +1,1 @@
+[24-Jan-2014 05:29:50 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /home/ecsiapps/public_html/ECSICrmDev/modules/Users/authentication/SugarAuthenticate/SugarAuthenticate.php on line 317

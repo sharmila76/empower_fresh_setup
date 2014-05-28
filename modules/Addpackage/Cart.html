@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    {literal}
+    var total = 0.00;
+
+    function CalculateVal(item) {
+        if (item.checked) {
+            total += parseInt(item.value);
+        } else {
+            total -= parseInt(item.value);
+        }
+        //alert(total);
+        var n = total.toFixed(2);
+        document.getElementById('Totalcost').innerHTML = n;
+    }
+    function GoBack(item) {
+        history.go(-1);
+    }
+    {/literal}
+</script>

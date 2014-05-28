@@ -1,0 +1,22 @@
+<?php
+$module_name = 'help1_Help_module';
+$listViewDefs [$module_name] = 
+array (
+  'HELP_MODULE_NAME' => 
+  array (
+    'type' => 'enum',
+    'default' => true,
+    'studio' => 'visible',
+    'label' => 'LBL_HELP_MODULE_NAME',
+    'width' => '10%',
+  ),
+  'ASSIGNED_USER_NAME' => 
+  array (
+    'width' => '9%',
+    'label' => 'LBL_ASSIGNED_TO_NAME',
+    'module' => 'Employees',
+    'id' => 'ASSIGNED_USER_ID',
+    'default' => true,
+  ),
+);
+?>

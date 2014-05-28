@@ -1,0 +1,208 @@
+<!-- BEGIN: main -->
+<div class="clear"></div>
+<script language="JavaScript">
+<!--
+function jumpTo(date) {
+	var calDateObj = getDateObject(date);
+ document.forms['EditMatrix'].date.value = calDateObj.getFullYear() + '-' + (calDateObj.getMonth() + 1) + '-' + calDateObj.getDate();
+ document.forms['EditMatrix'].submit();
+}
+//-->
+</script>
+<form name="EditMatrix" method="GET" action="index.php">
+<input type="hidden" name="module" value="Timesheet">
+<input type="hidden" name="record" value="{ID}">
+<input type="hidden" name="date">
+<input type="hidden" name="action" value="EditMatrix">
+<input type="hidden" name="return_module" value="{RETURN_MODULE}">
+<input type="hidden" name="return_id" value="{RETURN_ID}">
+<input type="hidden" name="return_action" value="{RETURN_ACTION}">
+</form>
+
+<form method="POST" action="index.php" name="SaveMatrix" id="SaveMatrix">
+<input type="hidden" name="module" value="Timesheet" />
+<input type="hidden" name="action" value="SaveMatrix" />
+<input type="hidden" name="return_module" value="{RETURN_MODULE}" />
+<input type="hidden" name="return_id" value="{RETURN_ID}" />
+<input type="hidden" name="return_action" value="{RETURN_ACTION}" />
+<input type="hidden" name="return_url" value="index.php?module=Timesheet&action=index" />
+<input type="hidden" name="record" />
+</form>
+
+<form onsubmit="this.elements['top_save_button'].disabled=true;this.elements['bottom_save_button'].disabled=true;return false">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td style="padding-bottom: 2px;">
+			<input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button" type="submit" name="top_save_button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " onclick="document.forms['SaveMatrix'].submit()"> 
+			<input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="document.forms['SaveMatrix'].action.value='{RETURN_ACTION}'; document.forms['SaveMatrix'].module.value='{RETURN_MODULE}'; document.forms['SaveMatrix'].record.value='{RETURN_ID}'; document.forms['SaveMatrix'].submit()" type="button" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+	</td>
+ <td>
+  <input onclick="document.forms['EditMatrix'].date.value = '{PREVDATE}'; document.forms['EditMatrix'].submit();" type="button" class="button" value=" &laquo; {MOD.LBL_LAST_WEEK} ">
+
+   &nbsp;<span style="margin-left: 10px; margin-right: 10px; font-weight: bold; color: #990033">{MOD.LBL_WEEK} {WEEK} ({DATE_RANGE})</span>&nbsp;
+  
+  <input onclick="document.forms['EditMatrix'].date.value = '{NEXTDATE}';document.forms['EditMatrix'].submit();" type="button" class="button" value=" {MOD.LBL_NEXT_WEEK} &raquo; ">
+  &nbsp;&nbsp;
+  <input type="text" size="10" name="cal_date" id="cal_date" disabled>&nbsp;<img id="cal_date_trigger" src="themes/default/images/Calendar.gif" width="16" height="16" align="absmiddle" />&nbsp;<input type="button" class="button" value=" {MOD.LBL_JUMP_TO} " onclick="jumpTo(this.form.cal_date.value)" />
+ <script language="JavaScript">
+ <!--
+ Calendar.setup({
+    inputField : "cal_date",
+    daFormat : cal_date_format,
+    button : "cal_date_trigger",
+    singleClick : true,
+    step : 1,
+    weekNumbers:true
+ });
+ //-->
+ </script>
+  </td>
+	<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span>  {APP.NTC_REQUIRED}</td>
+	<td align="right">{EDIT_ADMIN}</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabForm">
+<tr>
+<td>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <tr valign="top">
+  <td class="dataLabel"></td>
+  <!-- BEGIN: matrix_header -->
+  <td class="dataLabel" nowrap>{MATRIX.day_of_week} {MATRIX.day}</td>
+  <!-- END: matrix_header -->
+  <td class="dataLabel" nowrap><b>{MOD.LBL_LIST_TOTAL}</b></td>
+ </tr>
+
+ <!-- BEGIN: matrix_row -->
+ <tr>
+  <td class="dataLabel">
+  <!-- BEGIN: matrix_parent --><span style="margin-right: 20px">&nbsp;</span><!-- END: matrix_parent -->{MATRIX.type}: <b><a href="index.php?module={MATRIX.type}&action=DetailView&record={MATRIX.id}">{MATRIX.name}</a></b> 
+  <!-- BEGIN: matrix_account -->
+  (<a href="index.php?module=Accounts&action=DetailView&record={MATRIX.account_id}">{MATRIX.account_name}</a>)
+  <!-- END: matrix_account -->
+  </td>
+  
+  <!-- BEGIN: matrix_subrow -->
+  <td class="dataField" align="center">
+  <input type="hidden" name="records[{MATRIX.id}.{MATRIX.date}]" value="{MATRIX.timesheet_id}" {MATRIX.disabled} />
+  <input type="text" size="3" onfocus="storeValue(this, 'records[{MATRIX.id}.{MATRIX.date}]', '{MATRIX.timesheet_id}')"  name="data[{MATRIX.id}.{MATRIX.type}.{MATRIX.date}]" onkeyup="updateTotals(this, {MATRIX.rowid}, {MATRIX.colid})" value="{MATRIX.actual}"/></td><!--onblur="updateTotals(this, {MATRIX.rowid}, {MATRIX.colid})"-->
+  <!-- END: matrix_subrow -->
+  <td class="dataLabel" align="center"><span id="row{MATRIX.rowid}"></span></td>
+ </tr>
+ <!-- END: matrix_row -->
+ <tr>
+  <td colspan="9"  style="border-top: 1px solid black">&nbsp;</td>
+ </tr>
+ <tr>
+  <td class="dataLabel"><b>{MOD.LBL_LIST_TOTAL}</b></td>
+  <td class="dataField" align="center"><span id="col0"></span></td>
+  <td class="dataField" align="center"><span id="col1"></span></td>
+  <td class="dataField" align="center"><span id="col2"></span></td>
+  <td class="dataField" align="center"><span id="col3"></span></td>
+  <td class="dataField" align="center"><span id="col4"></span></td>
+  <td class="dataField" align="center"><span id="col5"></span></td>
+  <td class="dataField" align="center"><span id="col6"></span></td>
+  <td class="dataLabel" align="right"><span id="total"></span></td>
+ </tr>
+ </table>
+</td></tr></table>
+<div style="padding-top: 2px">
+ <input title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" class="button" type="submit" name="bottom_save_button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " onclick="document.forms['SaveMatrix'].submit()"> 
+ <input title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="document.forms['SaveMatrix'].action.value='{RETURN_ACTION}'; document.forms['SaveMatrix'].module.value='{RETURN_MODULE}'; document.forms['SaveMatrix'].record.value='{RETURN_ID}'; document.forms['SaveMatrix'].submit()" type="button" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+</div>
+</form>
+
+<script language="javascript">
+<!--
+var formSaveMatrix = document.forms['SaveMatrix'];
+
+var num_grp_sep = "{NUM_GRP_SEP}";
+var dec_sep = "{DEC_SEP}";
+var storedValue = 0;
+var timesheet_TOTAL = 0;
+var timesheet_ROWTOTAL = new Array();
+var timesheet_COLTOTAL = new Array();
+
+function parseValue(value) {
+ var unformatted;
+ if (value != "") {
+  unformatted = unformatNumber(value, num_grp_sep, dec_sep);
+  value = parseFloat(unformatted);
+  if (isNaN(value)) {
+   value = 0;
+  }
+ } else {
+  value = 0;
+ }
+ return value;
+}
+
+function storeValue(obj, record, timesheet_id) {
+ storedValue = parseValue(obj.value);
+ // prepare timesheet entry for save
+ if (typeof formSaveMatrix.elements[obj.name] == 'undefined') {
+  var oInput;
+  if (timesheet_id != '') {
+   oInput = document.createElement('input');
+   oInput.setAttribute('type', 'hidden');
+   oInput.setAttribute('name', record);
+   oInput.setAttribute('value', timesheet_id);
+   formSaveMatrix.appendChild(oInput);
+  }
+  oInput = document.createElement('input');
+  oInput.setAttribute('type', 'hidden');
+  oInput.setAttribute('name', obj.name);
+  oInput.setAttribute('value', obj.value);
+  formSaveMatrix.appendChild(oInput);
+ }
+}
+
+function updateTotals(obj, row, col) {
+ value = parseValue(obj.value);
+
+ formSaveMatrix.elements[obj.name].value = obj.value;
+
+ eval("var rowObj = document.getElementById('row" + row + "');");
+ //var rowTotal = parseValue(rowObj.innerHTML);
+ if (typeof timesheet_ROWTOTAL[row] == 'undefined') {
+  rowTotal = 0;
+ }
+ else {
+  rowTotal = timesheet_ROWTOTAL[row];
+ }
+ timesheet_ROWTOTAL[row] = rowTotal - storedValue + value;
+ rowObj.innerHTML =  formatNumber(timesheet_ROWTOTAL[row], num_grp_sep, dec_sep);
+
+ var totalObj = document.getElementById('total');
+ timesheet_TOTAL = timesheet_TOTAL - storedValue + value;
+ totalObj.innerHTML = formatNumber(timesheet_TOTAL, num_grp_sep, dec_sep);
+
+ eval("var colObj = document.getElementById('col" + col + "');");
+ if (typeof timesheet_COLTOTAL[col] == 'undefined') {
+  colTotal = 0;
+ }
+ else {
+  colTotal = timesheet_COLTOTAL[col];
+ }
+ timesheet_COLTOTAL[col] = colTotal - storedValue + value;
+ colObj.innerHTML = formatNumber(timesheet_COLTOTAL[col], num_grp_sep, dec_sep);
+
+ storedValue = value;
+}
+
+<!-- BEGIN: total_row -->
+document.getElementById('row{ROW_IDX}').innerHTML = '{ROW_FVAL}';
+timesheet_ROWTOTAL[{ROW_IDX}] = {ROW_VAL};
+<!-- END: total_row -->
+document.getElementById('total').innerHTML = '{FTOTAL}';
+timesheet_TOTAL = {TOTAL};
+
+<!-- BEGIN: total_col -->
+document.getElementById('col{COL_IDX}').innerHTML = '{COL_FVAL}';
+timesheet_COLTOTAL[{COL_IDX}] = {COL_VAL};
+<!-- END: total_col -->
+//-->
+</script>
+<!-- END: main -->
+

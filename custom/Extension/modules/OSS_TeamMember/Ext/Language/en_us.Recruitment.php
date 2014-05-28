@@ -1,0 +1,70 @@
+<?php 
+//WARNING: The contents of this file are auto-generated
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_1_FROM_PROJECT_TITLE" ] = "Project Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_LEAVEMANAGEMENT_FROM_OSS_LEAVEMANAGEMENT_TITLE" ] = "Leave Details" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Team" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_REIMBURSEMENT_FROM_OSS_REIMBURSEMENT_TITLE" ] = "Reimbursement" ;
+
+
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Budget Sheet" ;
+
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_EMPLOYEMENTHISTORY_FROM_OSS_EMPLOYEMENTHISTORY_TITLE" ] = "Employement History " ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_DESIGNATIONCHANGEHISTORY_FROM_OSS_DESIGNATIONCHANGEHISTORY_TITLE" ] = "Designation Change History " ;
+
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_1_FROM_PROJECT_TITLE" ] = "Project Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_LEAVEMANAGEMENT_FROM_OSS_LEAVEMANAGEMENT_TITLE" ] = "Leave Details" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Team" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_REIMBURSEMENT_FROM_OSS_REIMBURSEMENT_TITLE" ] = "Reimbursement" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_REQUEST_FOR_CASH_FROM_OSS_REQUEST_FOR_CASH_TITLE" ] = "Request For Cash" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_1_FROM_PROJECT_TITLE" ] = "Project Manager" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_1_FROM_PROJECT_TITLE" ] = "Project Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_LEAVEMANAGEMENT_FROM_OSS_LEAVEMANAGEMENT_TITLE" ] = "Leave Details" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_PROJECTBUDGETSHEET_FROM_OSS_PROJECTBUDGETSHEET_TITLE" ] = "Project Team" ;
+
+
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_FROM_PROJECT_TITLE" ] = "Account Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_PROJECT_1_FROM_PROJECT_TITLE" ] = "Project Manager" ;
+$mod_strings [ "LBL_OSS_TEAMMEMBER_OSS_LEAVEMANAGEMENT_FROM_OSS_LEAVEMANAGEMENT_TITLE" ] = "Leave Details" ;
+
+
+$mod_strings ['VALUE' ]= 'Billable?';
+$mod_strings ['LBL_TYPE' ]= 'Type';
+$mod_strings ['LBL_STATUS' ]= 'Status';
+$mod_strings ['LBL_BILLABLE' ]= 'Billable?';
+$mod_strings ['LBL_LOCATION' ]= 'Location';
+
+?>

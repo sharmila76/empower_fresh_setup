@@ -1,0 +1,53 @@
+<link rel="stylesheet" type="text/css" href="themes/iSales/css/jquery.multiselect.css" />
+
+<link rel="stylesheet" type="text/css" href="themes/iSales/css/jquery-ui-1.10.4.custom.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="themes/iSales/js/prettify.js"></script>
+<script type="text/javascript" src="themes/iSales/js/jquery.multiselect.js"></script>
+<script type="text/javascript">
+    {
+        literal
+    }
+    $(function() {
+        $("#package_name").multiselect();
+    });
+    {
+        /literal}
+</script>
+
+<form method="POST" action="index.php">
+    <input type="hidden" name="module" value="AddPackage">
+    <input type="hidden" name="action" value="Addfeature">
+    <div style="width:98%; margin:0px auto;">
+        <h2>Package Features</h2>
+        <table style="border:1px solid silver; padding:5px; margin-bottom:10px;">
+            <tr>
+                <td><b><font color='#663300'>Feature Code<em>*</em></font></b></td>
+                <td><label><input id="name" type="text" name="code"  style="width:90%" placeholder="[AUTO]"/>
+                    </label></td>
+                <td><b><font color='#663300'>Feature Name<em>*</em></font></b></td>
+                <td>                       
+                    <select name='name'>
+                        {foreach from=$MODULE_LIST item=module}
+                        <option value="{$module}">{$module}</option>
+                        {/foreach}
+                    </select>
+                </td>
+                <td>Assign Package</td>
+                {if $PACKAGE_LIST}
+                <td><select id="package_name" title="Package" name='select[]' multiple="multiple"  size="5" style="height:auto">
+                        {foreach from=$PACKAGE_LIST item=value}
+                        <option value="{$value.PackageName}">{$value.PackageName}</option>
+                        {/foreach}
+                    </select>
+                </td>
+                {/if}
+                <td>
+                    <input type="submit" title="Add Feature" value="Save" name="add_feature" width="17">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+

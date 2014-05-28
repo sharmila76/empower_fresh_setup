@@ -1,0 +1,70 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="themes/iSales/js/jquery.countdownTimer.js"></script>
+<script type="text/javascript">
+    {
+        literal
+    }
+    $(function() {
+        $('#ms_timer').countdowntimer({
+        minutes: '{/literal}{$time}{literal}',
+                seconds: 00,
+                size: "lg"
+        });
+                var minute = {/literal}{$time}{literal} * 60000;
+                setTimeout(function () { FadeDiv(); }, minute);
+                function FadeDiv() {
+                    var confirm_box = confirm('hai');
+                    if(confirm_box) {
+                        $("#question_form").submit();
+                    }
+                }
+                    });
+                    
+            {
+            /literal}
+</script>
+
+<form id="question_form" method="GET" action="index.php">
+    <input type="hidden" name="module" value="Eval_Evaluations">
+    <input type="hidden" name="action" value="Questions">
+    {if $questions_list}
+    <table style="border:0px; float: right;">
+        <tr>
+            <td style="width:60px;text-align:center;">Minutes</td>
+            <td style="width:70px;text-align:center;">Seconds</td>
+        </tr>
+        <tr>
+            <td colspan="4"><span id="ms_timer"></span></td>
+        </tr>
+    </table>
+    
+    <input type="hidden" name="candidate_name" value="{$candidate_name}">
+    <input type="hidden" name="subject_code" value="{$subject_code}">
+    
+    {foreach from=$questions_list item=value}
+    <table>
+        <tr>
+        <input type="hidden" name="question[]" value="{$value.question_code}">
+        <input type="hidden" name="correct_answer[]" value="{$value.correct_answer}">
+        <td>{$value.question_name}</td>
+        </tr>
+        <tr>
+            <td><input name="{$value.question_code}[]" type="checkbox" value="{$value.answer1}">{$value.answer1}</td>
+        </tr>   
+        <tr>    
+            <td><input name="{$value.question_code}[]" type="checkbox" value="{$value.answer2}">{$value.answer2}</td>
+        </tr>
+        <tr>
+            <td><input name="{$value.question_code}[]" type="checkbox" value="{$value.answer3}">{$value.answer3}</td>
+        </tr>
+        <tr>
+            <td><input name="{$value.question_code}[]" type="checkbox" value="{$value.answer4}">{$value.answer4}</td>
+        </tr>
+        <tr>
+            <td>---</td>
+        </tr>
+    </table>
+    {/foreach}
+    <input type="submit" value="Submit Test" name="submit_test">
+    {/if}    
+</form>

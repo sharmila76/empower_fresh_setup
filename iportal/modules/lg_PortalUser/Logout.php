@@ -1,0 +1,2 @@
+<?php
+	AuthenticationController::getInstance()->logout();

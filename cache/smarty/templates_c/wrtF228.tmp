@@ -1,0 +1,81 @@
+<?php /* Smarty version 2.6.11, created on 2014-04-19 05:09:07
+         compiled from themes/iSales/tpls/header.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'explode', 'themes/iSales/tpls/header.tpl', 90, false),)), $this); ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_head.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+<body onMouseOut="closeMenus();">
+<div id="contentWrapper">
+    <a name="top"></a>
+    <?php echo $this->_tpl_vars['DCSCRIPT']; ?>
+
+    <div id="header">
+        <div id="headerTop">
+            <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_companyLogo.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>            
+            <div id="headerLink">
+                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_globalLinks.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>                
+                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_welcome.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>                
+            </div>
+            <div class="clear"></div>
+            <?php if (! $this->_tpl_vars['AUTHENTICATED']): ?>
+                <br/><br/>
+            <?php endif; ?>
+        </div>
+        <div id="headerNav">
+            <div id="ajaxHeader">
+                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_headerModuleList.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+            </div>
+        </div>
+        <div class="clear"></div>
+            </div>
+
+    <?php echo '
+    <iframe id=\'ajaxUI-history-iframe\' src=\'index.php?entryPoint=getImage&imageName=blank.png\'  title=\'empty\' style=\'display:none\'></iframe>
+<input id=\'ajaxUI-history-field\' type=\'hidden\'>
+    <script type=\'text/javascript\'>
+        if (SUGAR.ajaxUI && !SUGAR.ajaxUI.hist_loaded)
+        {
+            YAHOO.util.History.register(\'ajaxUILoc\', "", SUGAR.ajaxUI.go);
+            ';  if ($_REQUEST['module'] != 'ModuleBuilder'): ?>            YAHOO.util.History.initialize("ajaxUI-history-field", "ajaxUI-history-iframe");
+            <?php endif;  echo '
+        }
+    </script>
+    '; ?>
+
+
+    <div id="main">
+        <div id="content" <?php if (! $this->_tpl_vars['AUTHENTICATED']): ?>class="noLeftColumn" <?php endif; ?>>
+            <table style="width:100%">
+                <tr>
+                                        
+                    <?php $this->assign('excluded_module', ((is_array($_tmp=',')) ? $this->_run_mod_handler('explode', true, $_tmp, "Home,Administration,Users,Import,ModuleBuilder,Studio,SugarFeed,ACLRoles,Configurator,UpgradeWizard,OAuthKeys,Schedulers,Releases,EmailMan,InboundEmail,Currencies,Connectors") : explode($_tmp, "Home,Administration,Users,Import,ModuleBuilder,Studio,SugarFeed,ACLRoles,Configurator,UpgradeWizard,OAuthKeys,Schedulers,Releases,EmailMan,InboundEmail,Currencies,Connectors"))); ?>
+
+                    <?php if ($this->_tpl_vars['AUTHENTICATED'] && ! in_array ( $_REQUEST['module'] , $this->_tpl_vars['excluded_module'] )): ?>
+                        <td id="sidebarCell">
+                            <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "themes/iSales/tpls/./_sidebar.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+                        </td>
+                    <?php endif; ?>
+                    <td id="bodyCell">
